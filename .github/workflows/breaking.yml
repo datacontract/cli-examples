@@ -7,6 +7,5 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - run: brew unlink go@1.20
-      - run: brew install datacontract/brew/datacontract
+      - run: brew install datacontract/brew/datacontract --overwrite go
       - run: datacontract breaking --with https://raw.githubusercontent.com/datacontract/cli-examples/main/datacontract.yaml
