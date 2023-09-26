@@ -4,8 +4,11 @@ on: [pull_request]
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: brew install datacontract/brew/datacontract --overwrite go
-      - run: datacontract breaking --with https://raw.githubusercontent.com/datacontract/cli-examples/main/datacontract.yaml
+      - name: Get CLI
+        run: |
+          curl -L https://github.com/datacontract/cli/releases/download/{VERSION}/datacontract-{VERSION}-{OS}-{ARCH}.tar.gz -o datacontract.tar.gz
+          tar -xf datacontract.tar.gz
+      - run: ./datacontract breaking --with https://raw.githubusercontent.com/datacontract/cli-examples/main/datacontract.yaml
