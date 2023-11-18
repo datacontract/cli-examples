@@ -1,0 +1,4 @@
+data_source default:
+  type: duckdb
+  path: db.duckdb
+  read_only: true

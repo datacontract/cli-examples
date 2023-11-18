@@ -16,3 +16,16 @@ schema:
           - name: my_column
             data_type: text
             description: "contains values"
+      - name: cans
+        columns:
+          - name: id
+            type: int64
+          - name: brand
+            type: string
+          - name: flavour
+            type: string
+quality:
+  type: SodaCL
+  specification: 
+    checks for cans:
+      - duplicate_count(brand, flavour) = 0
